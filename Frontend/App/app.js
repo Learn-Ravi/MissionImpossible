@@ -1,0 +1,1 @@
+var MissionImpossible = angular.module('MissionImpossible', ['ui.bootstrap', 'AlertProvider', 'satellizer', 'ngAnimate','ui.router']);
