@@ -14,10 +14,7 @@ gulp.task('scripts', function () {
   'C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/gulpdependencies/angular-ui-router.js'
     ,'C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/gulpdependencies/*.js'])
     .pipe(jshint('.jshintrc'))
-    .pipe(browserify({
-      insertGlobals: true,
-      debug: true
-    }))
+    .pipe(sort())
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
     .pipe(gulp.dest('gulp/js'))
