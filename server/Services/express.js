@@ -9,8 +9,8 @@ app.use(function (req, res, next) {
 
   next();
 });
-app.use("/styles", express.static('C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/styles'))
-app.use("/dependencies", express.static('C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/dependencies'));
-app.use("/Frontend", express.static('C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/Frontend'));
+app.use("/styles", express.static(__base + 'styles'))
+app.use("/dependencies", express.static(__base + 'dependencies'));
+app.use("/Frontend", express.static(__base + 'Frontend'));
 global.app = app;
 module.exports = app;
