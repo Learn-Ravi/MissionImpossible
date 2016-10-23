@@ -4,7 +4,8 @@ MissionImpossible.config(['$urlRouterProvider', '$stateProvider', '$httpProvider
 
     $stateProvider.state('login', {
       url: '/',
-      templateUrl: 'Frontend/Views/login.html'
+      templateUrl: 'Frontend/Views/login.html',
+      controller: 'LoginCtrl'
     }).state('register', {
       url: '/register',
       templateUrl: 'Frontend/Views/register.html',

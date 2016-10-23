@@ -1,11 +1,10 @@
 <!doctype html>
 <html>
-
 <head>
   <title>This is MI project</title>
   <link rel="stylesheet" href="styles/bootstrap-superhero.min.css" />
   <link rel="stylesheet" href="styles/main.css" />
-  <script src="dependencies/main.min.js"></script>
+  <script src="dependencies/main.js"></script>
   <!--<script src="../dependencies/angular.js"></script>
   <script src="dependencies/satellizer/dist/satellizer.js"></script>
   <script src="dependencies/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -16,9 +15,12 @@
   <script src="Frontend/Factories/authInterceptor.js"></script>
   <script src="Frontend/App/app.config.js"></script>
   <script src="Frontend/Controllers/register.js"></script>
+  <script src="Frontend/Controllers/login.js"></script>
   <script src="Frontend/Controllers/header.js"></script>
   <script src="Frontend/Controllers/logout.js"></script>
   <script src="Frontend/Controllers/jobs.js"></script>
+  <script src="Frontend/Common/alertProvider.js"></script>
+  <script src="Frontend/Common/commonAPI.js"></script>
   <script src="Frontend/Factories/authToken.js"></script>  
 </head>
 
@@ -33,20 +35,6 @@
     <div class="footer">
     </div>
   </div>
-  <!--<div ng-controller="RegisterCtrl as register">
-    <h1>Index.html</h1>
-    <form ng-submit="register.submit()" name="form" class="form-signin" novalidate>
-      <h1 class="form-signin-heading text-muted">Register</h1>
-      <input name="email" ng-model="email" type="email" class="form-control" placeholder="Email address" required>
-      <p class="help-block" ng-show="form.email.$dirty && form.email.$invalid">Please enter a proper email.</p>
-      <input name="password" ng-model="password" type="password" class="form-control" placeholder="Password" required>
-      <input name="password_confirm" ng-model="password_confirm" type="password" class="form-control" placeholder="Confirm Password"
-        validate-equals='password'>
-      <p class="help-block" ng-show="form.password_confirm.$dirty && password_confirm != password">please match the passwords.</p>
-      <button ng-disabled="(!form.email.$dirty || form.email.$invalid) || (!form.password_confirm.$dirty || password_confirm != password)"
-        class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form>
-  </div>-->
 </body>
 
 </html>
