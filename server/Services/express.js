@@ -1,6 +1,9 @@
 var express = require('express'),
   bodyParser = require('body-parser');
 var app = express();
+var passportModule = require(__base + 'server/Services/passport');
+passportModule.initializePassport(app);
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -12,5 +15,7 @@ app.use(function (req, res, next) {
 app.use("/styles", express.static(__base + 'styles'))
 app.use("/dependencies", express.static(__base + 'dependencies'));
 app.use("/Frontend", express.static(__base + 'Frontend'));
-global.app = app;
+require(__base + 'server/Services/API\'s').loadAllAPI(app);
+app.passportModule = passportModule;
+
 module.exports = app;
