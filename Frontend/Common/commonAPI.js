@@ -11,22 +11,24 @@ MissionImpossible.service('commonAPIService', ['$q', '$http',
           'Content-Type': 'application/json'
         },
         data: data,
-        async: false,
         cache: false
-      }).success(function (data) {
+      }).success(function (data, status) {
         if (data) {
           deferredObject.resolve({
             success: true,
-            data: data
+            data: data,
+            status: status
           });
         } else {
           deferredObject.resolve({
             success: false
           });
         }
-      }).error(function (Data) {
+      }).error(function (error,status) {
         deferredObject.resolve({
-          success: false
+          success: false,
+          status: status,
+          error: error
         });
       });
       return deferredObject.promise;

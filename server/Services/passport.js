@@ -4,8 +4,9 @@ passportModule.initializePassport = function (app) {
   this.passport = require('passport');
   var User = require(__base + 'server/Services/models/Users');
   var LocalStrategy = require('passport-local').Strategy;
-
   app.use(this.passport.initialize());
+  var loginStrategy = require(__base + 'server/Services/loginStrategy')(LocalStrategy,User);
+  var registerStrategy = require(__base + 'server/Services/registerStrategy')(LocalStrategy,User);
   this.passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
@@ -14,32 +15,7 @@ passportModule.initializePassport = function (app) {
     done(null, user.id);
   });
 
-  var Strategy = new LocalStrategy({
-    usernameField: 'email'
-  }, function (email, password, done) {
-    var searchUser = {
-      'email': email
-    }
-    User.findOne(searchUser, function (err, user) {
-      if (err)
-        return done(err);
-      if (!user) {
-        return done(null, false, {
-          message: 'Wrong email/password'
-        });
-      }
-      user.comparePasswords(password, function (err, isMatch) {
-        if (err)
-          return done(err);
-        if (!isMatch) {
-          return done(null, false, {
-            message: 'Wrong email/password'
-          });
-        }
-        return done(null, user);
-      });
-    });
-  });
-  this.passport.use(Strategy);
+  this.passport.use('login-Strategy',loginStrategy);
+  this.passport.use('register-Strategy',registerStrategy);
 }
 module.exports = passportModule;

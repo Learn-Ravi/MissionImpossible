@@ -14,7 +14,11 @@ MissionImpossible.controller('RegisterCtrl', ['$scope', 'alertProviderService', 
           AuthToken.setToken(result.data.token);
           AlertProviderService.showAlert(Config.ALERT_TYPE_SUCCESS, 'You are now registered. Welcome, ' + _this.user.email + '!');
         } else {
-          AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'Could not register!!');
+          if (result.status === 409) {
+            AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, result.error.message);
+          } else {
+            AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'Could not register!!');
+          }          
         }
       });
     };
