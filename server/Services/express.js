@@ -1,7 +1,8 @@
 var express = require('express'),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  path = require('path');
 var app = express();
-var passportModule = require(__base + 'server/Services/passport');
+var passportModule = require(__base + 'Services/passport');
 passportModule.initializePassport(app);
 app.passportModule = passportModule;
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -13,10 +14,10 @@ app.use(function (req, res, next) {
 
   next();
 });
-app.use("/styles", express.static(__base + 'styles'))
-app.use("/dependencies", express.static(__base + 'dependencies'));
-app.use("/Frontend", express.static(__base + 'Frontend'));
-require(__base + 'server/Services/API\'s').loadAllAPI(app);
+app.use("/styles", express.static(path.resolve(__base + '..//' + 'styles')))
+app.use("/dependencies", express.static(path.resolve(__base + '..//' + 'dependencies')));
+app.use("/Frontend", express.static(path.resolve(__base + '..//' + 'Frontend')));
+require(__base + 'Services/API\'s').loadAllAPI(app);
 
 
 module.exports = app;
