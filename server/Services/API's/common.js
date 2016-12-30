@@ -1,4 +1,5 @@
-var common = {};
+var common = {},
+  jwt = require('jwt-simple');
 
 common.createSendToken = function (user, res) {
   var payload = {

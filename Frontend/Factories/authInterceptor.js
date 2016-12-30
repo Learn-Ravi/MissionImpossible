@@ -1,6 +1,7 @@
-MissionImpossible.factory('AuthInterceptor', ['AuthToken', function (AuthToken) {
+MissionImpossible.factory('AuthInterceptor', ['$injector', function ($injector) {
   return {
     request: function (config) {
+      var AuthToken = $injector.get('AuthToken');
       var token = AuthToken.getToken();
 
       if (token) {

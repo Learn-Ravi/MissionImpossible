@@ -15,7 +15,25 @@ MissionImpossible.controller('LoginCtrl', ['$scope', 'alertProviderService', 'Au
         } else {
           AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'You are not Authorized!!');
         }
-      });      
+      });
+    }
+
+    _this.authenticate = function (type) {
+      var promise = AuthToken.googleAuth();
+      promise.then(function (result) {
+        if (result.success) {
+          result.promise.then(function (result) {
+            if(result.success) {
+              AuthToken.setToken(result.data.token);
+              AlertProviderService.showAlert(Config.ALERT_TYPE_SUCCESS, 'You are now logged in. Welcome, ' + _this.user.email + '!');
+            } else {
+              AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'You are not Authorized!!');
+            }
+          });          
+        } else {
+          AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'You are not Authorized!!');
+        }
+      });
     }
   }
 ]);
