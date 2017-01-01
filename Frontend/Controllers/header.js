@@ -1,3 +1,3 @@
-MissionImpossible.controller('HeaderCtrl', ['$scope', 'AuthToken', function ($scope, AuthToken) {
-  $scope.isAuthenticated = AuthToken.isAuthenticated;
+MissionImpossible.controller('HeaderCtrl', ['$scope', '$auth', function ($scope, $auth) {
+  $scope.isAuthenticated = $auth.isAuthenticated;
 }]);

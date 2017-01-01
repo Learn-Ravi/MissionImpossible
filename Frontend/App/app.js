@@ -3,5 +3,6 @@ var MissionImpossible = angular.module('MissionImpossible', ['ui.bootstrap', 'Al
     'ALERT_TYPE_WARNING' : 'Warning',
     'BASE_URL':'http://localhost:3000/',
     'API_TYPE_GET': 'GET',
-    'API_TYPE_POST': 'POST'
+    'API_TYPE_POST': 'POST',
+    'GOOGLE_AUTHCODE_ENDPOINT':'https://accounts.google.com/o/oauth2/v2/auth?'
 });

@@ -1,5 +1,6 @@
 var jobs = function (app) {
-  var jobs = ['1', '2', '3', '4'];
+  var jobs = ['1', '2', '3', '4'],
+    jwt = require('jwt-simple');;
   app.get('/jobs', function (req, res) {
     if (!req.headers.authorization) {
       return res.status(401).send({

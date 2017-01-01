@@ -5,6 +5,8 @@ var hostname = 'localhost',
   app = require(__base + 'Services/express'),
   path = require('path');
 
+//load all constants
+require(__base + 'common/constants');
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__base + '..//' + 'index.html'));
 });

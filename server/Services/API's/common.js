@@ -1,9 +1,10 @@
 var common = {},
-  jwt = require('jwt-simple');
-
+  jwt = require('jwt-simple'),
+  moment = require('moment');
 common.createSendToken = function (user, res) {
   var payload = {
-    subject: user.id
+    subject: user.id,
+    exp: moment().add(10,'days').unix()
   }
 
   var token = jwt.encode(payload, secret);

@@ -1,5 +1,5 @@
-MissionImpossible.controller('LogoutCtrl',['AuthToken','$state', function (AuthToken, $state) {
-		AuthToken.removeToken();
+MissionImpossible.controller('LogoutCtrl',['$auth','$state', function ($auth, $state) {
+		$auth.removeToken();
 
     $state.go('login');
 	}]);

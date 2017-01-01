@@ -21,8 +21,7 @@ MissionImpossible.factory('AuthToken', ['$window', 'commonAPIService', 'CONFIG',
         localStorage.removeItem(userToken);
       },
       googleAuth: function () {
-        var deferredObject = $q.defer();
-        var url = 'https://accounts.google.com/o/oauth2/v2/auth?';
+        var deferredObject = $q.defer();        
         var options = "width=500, height=500, left=" + ($window.outerWidth - 500) / 2 +
           ",top=" + ($window.outerWidth - 500) / 2.5;
         var urlBuilder = [];
@@ -30,7 +29,7 @@ MissionImpossible.factory('AuthToken', ['$window', 'commonAPIService', 'CONFIG',
           redirectUri = $window.location.origin;
         urlBuilder.push('response_type=code', 'client_id=' + clientId,
           'redirect_uri=' + redirectUri, 'scope= profile email');
-        url = url + urlBuilder.join('&');
+        var url = Config.GOOGLE_AUTHCODE_ENDPOINT + urlBuilder.join('&');
         var popUp = $window.open(url, '', options);
         $window.focus();
 

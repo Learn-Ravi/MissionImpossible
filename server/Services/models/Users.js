@@ -4,9 +4,10 @@ var bcrypt = require('bcrypt-nodejs'),
 var UserSchema = new connection.Schema({
   email: String,
   password: String,
-  googleId:String,
-  displayName: String
-})
+  googleId: String,
+  displayName: String,
+  facebookId: String
+});
 
 UserSchema.methods.toJSON = function () {
   var user = this.toObject();
