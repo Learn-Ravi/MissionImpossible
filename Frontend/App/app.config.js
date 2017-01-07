@@ -26,17 +26,11 @@ MissionImpossible.config(['$urlRouterProvider', '$stateProvider', '$httpProvider
     $authProvider.facebook({
       clientId: '1808475049394857',
       url: Config.BASE_URL + 'auth/facebook',
-      authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
+      authorizationEndpoint: 'https://www.facebook.com/v2.8/dialog/oauth',
       redirectUri: window.location.origin + '/',
-      requiredUrlParams: ['display', 'scope'],
-      scope: ['email', 'user_birthday', 'user_hometown', 'id'],
-      scopeDelimiter: ',',
-      display: 'popup',
-      oauthType: '2.0',
-      popupOptions: {
-        width: 580,
-        height: 400
-      }
+      requiredUrlParams: ['scope'],
+      scope: ['email', 'user_birthday', 'public_profile','user_friends'],
+      scopeDelimiter: ','
     });
     $authProvider.loginUrl = Config.BASE_URL + 'login'
     $authProvider.signupUrl = Config.BASE_URL + 'register'
