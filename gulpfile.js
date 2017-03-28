@@ -29,12 +29,12 @@ gulp.task('scripts', function () {
       base: './'
     }))
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('gulp/js'))
+    .pipe(gulp.dest('dependencies'))
     .pipe(rename({
       suffix: '.min'
     }))
     .pipe(uglify({mangle: false}))
-    .pipe(gulp.dest('gulp/js'))
+    .pipe(gulp.dest('dependencies'))
     .pipe(notify({
       message: 'Scripts task complete'
     }));
