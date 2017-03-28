@@ -11,8 +11,9 @@ var gulp = require('gulp'),
   concat = require('gulp-concat');
 
 gulp.task('scripts', function () {
-  return gulp.src(['C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/gulpdependencies/angular.js',
-      'C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/gulpdependencies/angular-ui-router.js', 'C:/Users/ravi/Desktop/Mission Impossible Project/nwjs-sdk-v0.17.0-win-ia32/MI/gulpdependencies/*.js'
+  return gulp.src(['./gulpdependencies/angular.js',
+      './gulpdependencies/angular-ui-router.js',
+      './gulpdependencies/*.js'
     ])
     .pipe(jshint('.jshintrc'))
     //.pipe(sort())
