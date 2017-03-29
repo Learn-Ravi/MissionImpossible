@@ -8,7 +8,9 @@ var gulp = require('gulp'),
   sort = require('gulp-angular-filesort'),
   browserify = require('gulp-browserify'),
   order = require('gulp-order'),
-  concat = require('gulp-concat');
+  concat = require('gulp-concat'),
+  deployer = require('nexus-deployer'),
+  Zip = require('node-7z');
 
 gulp.task('scripts', function () {
   return gulp.src(['./gulpdependencies/angular.js',
@@ -40,6 +42,44 @@ gulp.task('scripts', function () {
     }));
 });
 
+gulp.task('artifacts:generate', function(callback) {
+  var archive = new Zip();
+  console.log('started archive');
+  archive.add('C:/artifacts/nexus-deployer.7z', ['*.*','*'], {
+  }).progress(function (files) {
+    console.log('Some files are extracted: %s', files);
+  }).then(function () {
+    console.log('artifacts created.')
+    callback();
+  });
+  callback();
+});
+
+gulp.task('deploy:artifacts', ['artifacts:generate'], function(callback) {
+  
+    var snapshot = {
+        groupId: 'nexus-deployer',
+        artifactId: 'nexus-deployer',
+        version: '1.3-SNAPSHOT',
+        packaging: 'zip',
+        auth: {
+            username:'admin',
+            password:'admin123'
+        },
+        pomDir: 'C:/build/pom',
+        url: 'http://localhost:8081/nexus/content/repositories/snapshots',
+        artifact: 'C:/artifacts/nexus-deployer.7z',
+        noproxy: 'localhost',
+        cwd: '',
+        quiet: false,
+        insecure: true
+    };
+ 
+    deployer.deploy(snapshot, callback);
+    console.log('artifacts deployed');
+});
+
 gulp.task('default', [], function () {
-  gulp.start('scripts');
+  //gulp.start('scripts');
+  gulp.start('deploy:artifacts');
 });
