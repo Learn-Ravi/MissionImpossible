@@ -52,7 +52,6 @@ gulp.task('artifacts:generate', function(callback) {
     console.log('artifacts created.')
     callback();
   });
-  callback();
 });
 
 gulp.task('deploy:artifacts', ['artifacts:generate'], function(callback) {
