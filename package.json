@@ -39,6 +39,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.4",
+    "nexus-deployer": "^0.1.7",
+    "node-7z": "^0.4.0",
     "request": "^2.79.0"
   }
 }
